@@ -11,6 +11,7 @@ class Connect
   const DB = 'anestesia_carioca_db';
   const USER = 'anestesia_carioca';
   const PASSWORD = 'anestesia';
+  const PORT = '3306';
   private $table;
   private $connection;
 
@@ -23,7 +24,7 @@ class Connect
   protected function connectDB()
   {
     try {
-      $this->connection = new PDO('mysql:host='.self::HOSTNAME.';dbname='.self::DB, self::USER, self::PASSWORD);
+      $this->connection = new PDO('mysql:host='.self::HOSTNAME.'port='.self::PORT.';dbname='.self::DB, self::USER, self::PASSWORD);
       $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch (PDOException $Erro) {
       die('ERROR: '.$Erro->getMessage());
